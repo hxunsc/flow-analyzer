@@ -79,7 +79,7 @@ def run_flow_analysis(df_log):
     parsed_df = parsed_df[parsed_df["timestamp"].apply(lambda x: isinstance(x, datetime))]
     parsed_df = parsed_df.sort_values(by=["user_id", "timestamp"])
 
-    model_bundle = joblib.load("models/zone_model_bundle.pkl")
+    model_bundle = joblib.load("models/zone_pre_model_bundle.pkl")
     preprocessor = model_bundle["preprocessor"]
     internal_clf = model_bundle["internal_model"]
     external_clf = model_bundle["external_model"]
