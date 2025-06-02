@@ -10,19 +10,17 @@ def classify_inout(ap, band, rssi):
         return None
     band = int(band)
     rssi = float(rssi)
-    if ap == "ap1" and (band == 2 or (band == 5 and rssi <= 20.66) or (band == 6 and rssi <= 22.14)):
+    if ap == "ap1" and ((band == 2 and rssi <= 38.71) or (band == 5 and rssi <= 19.44) or (band == 6 and rssi <= 17.22)):
         return "외부"
     if ap == "ap2" and (band == 6 and rssi <= 15.36):
         return "외부"
-    if ap == "ap3" and (band == 2 or (band == 5 and rssi <= 31.49) or (band == 6 and rssi <= 17.02)):
+    if ap == "ap3" and ((band == 5 and rssi <= 28.49) or (band == 6 and rssi <= 17.02)):
         return "외부"
-    if ap == "ap4" and (band == 2 or (band == 5 and rssi <= 39.55) or (band == 6 and rssi <= 31.63)):
+    if ap == "ap4" and ((band == 2 and rssi <= 48.37) or (band == 5 and rssi <= 34.21) or (band == 6 and rssi <= 31.63)):
         return "외부"
-    if ap == "ap6" and ((band == 5 and rssi <= 16.55) or (band == 6 and rssi <= 18.19)):
+    if ap == "ap6" and ((band == 5 and rssi <= 16.24) or (band == 6 and rssi <= 18.58)):
         return "외부"
-    if ap == "ap9" and ((band == 2 and rssi <= 32.31) or (band == 5 and rssi <= 28.73) or (band == 6 and rssi <= 28.00)):
-        return "외부"
-    if ap == "ap10" and (band == 5 and rssi <= 14.64):
+    if ap == "ap9" and ((band == 2 and rssi <= 32.31) or (band == 5 and rssi <= 20.13) or (band == 6 and rssi <= 32.06)):
         return "외부"
     return "내부"
 
