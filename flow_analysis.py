@@ -188,4 +188,4 @@ def run_flow_analysis(df_log):
     flow_summary = flow_summary[flow_summary["duration"] > timedelta(seconds=0)]
     flow_summary["duration"] = flow_summary["duration"].apply(lambda x: str(x).split(" ")[-1].split(".")[0])
 
-    return parsed_df, flow_summary
+    return flow_summary
