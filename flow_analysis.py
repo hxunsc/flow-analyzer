@@ -11,6 +11,26 @@ internal_clf = model_bundle["internal_model"]
 external_clf = model_bundle["external_model"]
 
 # 내부/외부 판별 함수
+def classify_inout(ap, band, rssi):
+    if pd.isna(ap) or pd.isna(band) or pd.isna(rssi):
+        return None
+    band = int(band)
+    rssi = float(rssi)
+    if ap == "ap1" and ((band == 2 and rssi <= 38.71) or (band == 5 and rssi <= 19.44) or (band == 6 and rssi <= 17.22)):
+        return "외부"
+    if ap == "ap2" and (band == 6 and rssi <= 15.46):
+        return "외부"
+    if ap == "ap3" and ((band == 5 and rssi <= 28.5) or (band == 6 and rssi <= 17.02)):
+        return "외부"
+    if ap == "ap4" and ((band == 2 and rssi <= 48.37) or (band == 5 and rssi <= 35.14) or (band == 6 and rssi <= 32.6)):
+        return "외부"
+    if ap == "ap6" and ((band == 5 and rssi <= 16.14) or (band == 6 and rssi <= 16.54)):
+        return "외부"
+    if ap == "ap9" and ((band == 2 and rssi <= 32.29) or (band == 5 and rssi <= 19.44) or (band == 6 and rssi <= 32.06)):
+        return "외부"
+    return "내부"
+
+# 로그 분석 및 flow 생성 함수
 def run_flow_analysis(df_log):
     regex_patterns = {
         "timestamp": r"^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+)\+00:00",
