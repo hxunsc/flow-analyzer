@@ -34,9 +34,6 @@ def summarize_flows(flow_summary):
     zone_avg_duration.index = zone_avg_duration.index.map(map_zone_name)
     zone_avg_duration = zone_avg_duration.to_dict()
 
-    # 날짜별 흐름 수
-    flows_by_date = flow_summary.groupby("date").size().to_dict()
-
     # 시간대별 zone 이동 흐름
     zone_hour_map = {}
     for _, row in flow_summary.iterrows():
@@ -104,7 +101,6 @@ def summarize_flows(flow_summary):
     return {
         "duration_distribution": duration_distribution,
         "zone_avg_duration": zone_avg_duration,
-        "flows_by_date": flows_by_date,
         "zone_hour_flow": zone_hour_flow,
         "zone_peak_info": zone_peak_info,
         "zone_first_visits": zone_first_visits,
