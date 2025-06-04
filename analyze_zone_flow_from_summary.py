@@ -95,8 +95,8 @@ def summarize_flows(flow_summary):
     subflows_2_named = {" → ".join(map_zone_name(z) for z in k.split("→")): v for k, v in subflow_counter_2.most_common(5)}
     subflows_3_named = {" → ".join(map_zone_name(z) for z in k.split("→")): v for k, v in subflow_counter_3.most_common(5)}
 
-    # 날짜별 고유 사용자 수
-    unique_users_by_date = flow_summary.groupby("date")["user_id"].nunique().to_dict()
+    # 날짜별 고유 사용자 수 → key를 str로 변환
+    unique_users_by_date = {str(k): v for k, v in flow_summary.groupby("date")["user_id"].nunique().to_dict().items()}
 
     return {
         "duration_distribution": duration_distribution,
