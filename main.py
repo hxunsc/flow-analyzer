@@ -10,8 +10,8 @@ def fetch_loki_logs():
     query = '{job="syslog_raw"}'
     limit = 4000
     now = time.time()
-    #start_ns = int((now - 86400 * 7) * 1e9)  # 7일 전 (ns)
-    start_ns = int((now - 86400 * 1) * 1e9) # 하루
+    start_ns = int((now - 86400 * 7) * 1e9)  # 7일 전 (ns)
+    #start_ns = int((now - 86400 * 1) * 1e9) # 하루
     end_ns = int(now * 1e9)
 
     log_lines = []
