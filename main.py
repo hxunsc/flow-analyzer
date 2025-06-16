@@ -3,16 +3,29 @@ import pandas as pd
 import time
 from flow_analysis import run_flow_analysis
 from analyze_zone_flow_from_summary import summarize_flows
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 def fetch_loki_logs():
     LOKI_URL = "http://loki:3100"
     query = '{job="syslog_raw"}'
     limit = 4000
-    now = time.time()
+    
+    now_utc = datetime.now(timezone.utc)
+    today_kst_0 = now_utc.astimezone(timezone(timedelta(hours=9))).replace(hour=0, minute=0, second=0, microsecond=0)
+    start_utc = today_kst_0 - timedelta(days=7)
+    end_utc = today_kst_0
+
+    # nanosecond 단위로 변환
+    start_ns = int(start_utc.timestamp() * 1e9)
+    end_ns = int(end_utc.timestamp() * 1e9)
+
+    print("시작(UTC):", start_utc)
+    print("끝(UTC):", end_utc)
+
+    #now = time.time()
     #start_ns = int((now - 86400 * 7) * 1e9)  # 7일 전 (ns)
-    start_ns = int((now - 86400 * 1) * 1e9) # 하루
-    end_ns = int(now * 1e9)
+    #start_ns = int((now - 86400 * 1) * 1e9) # 하루
+    #end_ns = int(now * 1e9)
 
     log_lines = []
     next_start = start_ns
