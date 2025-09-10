@@ -28,10 +28,10 @@ Wi-Fi AP 로그를 분석해 사용자 이동 흐름(zone flow) 을 재구성하
 │  └─ real_final_zone_model_bundle.pkl     # 학습된 전처리기 + 내부/외부 분류기 번들
 ├─ analyze_zone_flow_from_summary.py       # Flow 요약 테이블 → 통계 요약 dict 생성
 ├─ flow_analysis.py                        # 원시 로그 DataFrame → flow_summary 생성
-├─ main.py                                 # (프로젝트 진입점; 환경에 맞게 활용)
+├─ main.py                                 # (프로젝트 진입점)
 ├─ Dockerfile
 ├─ requirements.txt
-├─ 1f.png / 2f.png                         # (선택) 지도/시각화용 레퍼런스 이미지
+├─ 1f.png / 2f.png                         # 지도/시각화용 레퍼런스 이미지
 └─ README.md
 ``` 
 
