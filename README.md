@@ -173,7 +173,8 @@ print(stats)
 - `external_model`: 외부 zone용 RandomForestClassifier
 
 ## 분석 결과 대시보드
-- 사진첨부예정
+
+![2025-09-107-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2443fd24-53a5-43a6-b935-ac31befd0c5d)
 
 
 ### 내부/외부 판별 규칙 (classify_inout)
